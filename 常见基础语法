@@ -1,0 +1,90 @@
+基础语法：$(selector).action()
+
+    美元符号定义 jQuery  $ 
+    选择符（selector）“查询”和“查找” HTML 元素
+    jQuery 的 action() 执行对元素的操作
+    示例：
+        $(this).hide() - 隐藏当前元素
+        $("p").hide() - 隐藏所有段落
+        $("p.test").hide() - 隐藏所有 class="test" 的段落
+        $("#test").hide() - 隐藏所有 id="test" 的元素
+
+  选择器-by tag：
+
+    jQuery 使用 CSS 选择器来选取 HTML 元素。
+    示例：
+        $("p") 选取 <p> 元素。
+        $("p.intro") 选取所有 class="intro" 的 <p> 元素。
+        $("p#demo") 选取 id="demo" 的第一个 <p> 元素。
+
+选择器-by prop：
+
+    jQuery 使用 XPath 表达式来选择带有给定属性的元素。
+    示例：
+        $("[href]") 选取所有带有 href 属性的元素。　
+        $("[href='#']") 选取所有带有 href 值等于 "#" 的元素。
+        $("[href!='#']") 选取所有带有 href 值不等于 "#" 的元素。
+        $("[href$='.jpg']") 选取所有 href 值以 ".jpg" 结尾的元素。
+
+选择器-css：
+
+    jQuery CSS 选择器可用于改变 HTML 元素的 CSS 属性。
+    示例：
+        　　$("p").css("background-color","red");
+
+ 来点事件：
+
+    基于事件，我们可以做许多事情。
+    示例：
+        $(document).ready(function)
+        $(selector).click(function)
+        $(selector).focus(function)
+
+jQuery与html：
+
+    jQuery 提供一系列与 DOM 相关的方法，这使访问和操作元素和属性变得很容易。
+    三个简单实用的用于 DOM 操作的 jQuery 方法，get -- set：
+        $(selector).text()  -- text("")
+        $(selector).html() -- html("")
+        $(selector).val()   -- html("")  
+        $(selector).attr("")  -- attr("", "")
+        等同于，获name来找，$("input[name='whichName']").val()，对它重新赋值$("input[name='whichName']").val(oldTopic);
+
+jQuery-GET：
+
+    $.get("yourUrl", function(data, status){}); 其中，data是controller里这样写回的response.write("")/modelMap带回
+    示例：
+
+      $("button").click(function(){
+           $.get("demo_test.asp",function(data,status){
+               alert("Data: " + data + "\nStatus: " + status);
+           });
+      });
+
+jQuery-POST：
+
+    $.post(URL,data,callback);  其中，data是controller里这样写回的response.write("")/modelMap带回
+
+    示例：
+
+    $("button").click(function(){
+         $.post("demo_test_post.asp",
+                {
+                 name:"Donald Duck",
+                 city:"Duckburg"
+                },
+                function(data,status){
+                     alert("Data: " + data + "\nStatus: " + status);
+                });
+   });
+
+jQuery-遍历：
+
+    $(selector).each(function(index,element))
+
+    示例：
+    $("table").find("tr").each(function(){
+           $(this).find("td").each(function(){
+                                               alert($(this).text());
+                                          });
+    });
